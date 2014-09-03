@@ -1,32 +1,16 @@
 # visualization-js
 
-Here are a set of simple samples that show you how to accomplish different mapping and GIS tasks with the ArcGIS API for Javascript. The samples use ArcGIS Online basemaps and services.  Learn more [here](http://www.arcgis.com/about/).
+A collection of samples showing how to use the ArcGIS API for JavaScript to create various visualizations.
 
-[View it live](http://edn1.esri.com/quickstart-map-js/)
+### Basic
 
-![App](https://raw.github.com/Esri/quickstart-map-js/master/quickstart-map-js.png)
-
-## Features
-* Basemaps - Set different basemaps interactively
-* Geolocation - Find and display your geolocation
-* Place Finding - Find places or geocode an address
-* Directions - Get directions
-* Graphics - Draw points, lines and polygons
-* Cloud - Draw and query features stored in the ArcGIS Online cloud
-
-## Instructions
-
-1. Fork and then clone the repo. 
-2. Run and try the samples.
-
-## Requirements
-
-* Notepad or your favorite HTML editor
-* Web browser with access to the Internet
+* [Simple map](https://esri.github.io/visualization-js/basic_simple_map)
+* [Add data](https://esri.github.io/visualization-js/basic_add_data)
+* [Use renderer (simple)](https://esri.github.io/visualization-js/basic_use_renderer)
 
 ## Resources
 
-* [ArcGIS for JavaScript API Resource Center](http://help.arcgis.com/en/webapi/javascript/arcgis/index.html)
+* [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/)
 * [ArcGIS Blog](http://blogs.esri.com/esri/arcgis/)
 * [twitter@esri](http://twitter.com/esri)
 
