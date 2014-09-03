@@ -6,7 +6,7 @@ A collection of samples showing how to use the ArcGIS API for JavaScript to crea
 
 |[![](basic_simple_map/thumbnail.png)](https://esri.github.io/visualization-js/basic_simple_map)|![](basic_add_data/thumbnail.png)|![](basic_use_renderer/thumbnail.png)|
 |:-:|:-:|:-:|
-|Simple map|Add data|Use renderer (simple)|
+|[Simple map](basic_simple_map)|Add data|Use renderer (simple)|
 
 
 
