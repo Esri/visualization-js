@@ -2,10 +2,6 @@
 
 A collection of samples showing how to use the ArcGIS API for JavaScript to create various visualizations.
 
-![](thumbnail.png)
-
-## List of Samples
-
 ### Basic
 
 * [Simple map](https://esri.github.io/visualization-js/basic_simple_map)
