@@ -2,7 +2,7 @@
 
 A collection of samples showing how to use the ArcGIS API for JavaScript to create various visualizations.
 
-![](../thumbnail.png)
+![](thumbnail.png)
 
 ## Features
 * Basemaps - Set different basemaps interactively
