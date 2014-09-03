@@ -4,6 +4,12 @@ A collection of samples showing how to use the ArcGIS API for JavaScript to crea
 
 ### Basic
 
+|![](basic_simple_map/thumbnail.png)|![](basic_add_data/thumbnail.png)|![](basic_use_renderer/thumbnail.png)|
+|:-:|:-:|:-:|
+|Simple map|Add data|Use renderer (simple)|
+
+
+
 * [Simple map](https://esri.github.io/visualization-js/basic_simple_map)
 * [Add data](https://esri.github.io/visualization-js/basic_add_data)
 * [Use renderer (simple)](https://esri.github.io/visualization-js/basic_use_renderer)
