@@ -6,7 +6,9 @@ To explore these samples, you can:
 * Click any thumbnail below to see a live sample
 * Click the title under a thumbnail to view code
 
-## Basic
+## Samples
+
+### Basic
 
 |[![](basic_simple_map/thumbnail.png)](https://esri.github.io/visualization-js/basic_simple_map)|![](basic_add_data/thumbnail.png)|![](basic_use_renderer/thumbnail.png)|
 |:-:|:-:|:-:|
