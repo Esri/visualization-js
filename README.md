@@ -4,27 +4,11 @@ A collection of samples showing how to use the ArcGIS API for JavaScript to crea
 
 ![](thumbnail.png)
 
-## Features
-* Basemaps - Set different basemaps interactively
-* Geolocation - Find and display your geolocation
-* Place Finding - Find places or geocode an address
-* Directions - Get directions
-* Graphics - Draw points, lines and polygons
-* Cloud - Draw and query features stored in the ArcGIS Online cloud
-
-## Instructions
-
-1. Fork and then clone the repo. 
-2. Run and try the samples.
-
-## Requirements
-
-* Notepad or your favorite HTML editor
-* Web browser with access to the Internet
+## List of Samples
 
 ## Resources
 
-* [ArcGIS for JavaScript API Resource Center](http://help.arcgis.com/en/webapi/javascript/arcgis/index.html)
+* [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/)
 * [ArcGIS Blog](http://blogs.esri.com/esri/arcgis/)
 * [twitter@esri](http://twitter.com/esri)
 
