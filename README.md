@@ -6,6 +6,12 @@ A collection of samples showing how to use the ArcGIS API for JavaScript to crea
 
 ## List of Samples
 
+### Basic
+
+* [Simple map](https://esri.github.io/visualization-js/basic_simple_map)
+* [Add data](https://esri.github.io/visualization-js/basic_add_data)
+* [Use renderer (simple)](https://esri.github.io/visualization-js/basic_use_renderer)
+
 ## Resources
 
 * [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/)
