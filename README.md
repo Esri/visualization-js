@@ -1,10 +1,8 @@
 # visualization-js
 
-Here are a set of simple samples that show you how to accomplish different mapping and GIS tasks with the ArcGIS API for Javascript. The samples use ArcGIS Online basemaps and services.  Learn more [here](http://www.arcgis.com/about/).
+A collection of samples showing how to use the ArcGIS API for JavaScript to create various visualizations.
 
-[View it live](http://edn1.esri.com/quickstart-map-js/)
-
-![App](https://raw.github.com/Esri/quickstart-map-js/master/quickstart-map-js.png)
+![](../thumbnail.png)
 
 ## Features
 * Basemaps - Set different basemaps interactively
