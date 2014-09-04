@@ -10,7 +10,7 @@ To explore these samples, you can:
 
 ### Basic
 
-|[![](basic_simple_map/thumbnail.png)](https://esri.github.io/visualization-js/basic_simple_map)|![](basic_add_data/thumbnail.png)|![](basic_use_renderer/thumbnail.png)|
+|[![](basic_simple_map/thumbnail.png)](https://esri.github.io/visualization-js/basic_simple_map)|[![](basic_add_data/thumbnail.png)](https://esri.github.io/visualization-js/basic_add_data)|[![](basic_use_renderer/thumbnail.png)](https://esri.github.io/visualization-js/basic_use_renderer)|
 |:-:|:-:|:-:|
 |[Simple map](basic_simple_map)|[Add data](basic_add_data)|[Use renderer (simple)](basic_use_renderer)|
 
