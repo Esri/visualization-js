@@ -19,8 +19,9 @@
         "esri/renderers/UniqueValueRenderer",
         "esri/symbols/SimpleMarkerSymbol",
         "esri/Color",
+        "esri/dijit/Legend",
         "dojo/domReady!"
-      ], function(Map, FeatureLayer, UniqueValueRenderer, SimpleMarkerSymbol, Color) {
+      ], function(Map, FeatureLayer, UniqueValueRenderer, SimpleMarkerSymbol, Color, Legend) {
         var map = new Map("map", {
           basemap: "gray",
           center: [-100, 40],
@@ -54,10 +55,19 @@
         layer.setRenderer(renderer);
         
         map.addLayer(layer);
+        
+        var legend = new Legend({
+          layerInfos: [{
+            layer: layer
+          }]
+        }, "legend");
       });
     </script>
   </head>
   <body>
     <div id="map"></div>
+    <div id="info">
+      <div id="legend"></div>
+    </div>
   </body>
 </html>
