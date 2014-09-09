@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no"/>
+    <title>Data Visualization - Use Renderer</title>
+    <link rel="stylesheet" href="//js.arcgis.com/3.10/js/esri/css/esri.css">
+    <style>
+      html, body, #map {
+        height: 100%;
+        margin: 0;
+      }
+    </style>
+    <script src="//js.arcgis.com/3.10/"></script>
+    <script>
+      require([
+        "esri/map",
+        "esri/layers/FeatureLayer",
+        "esri/renderers/UniqueValueRenderer",
+        "esri/symbols/SimpleMarkerSymbol",
+        "esri/Color",
+        "dojo/domReady!"
+      ], function(Map, FeatureLayer, UniqueValueRenderer, SimpleMarkerSymbol, Color) {
+        var map = new Map("map", {
+          basemap: "gray",
+          center: [-100, 40],
+          zoom: 5
+        });
+        
+        var layer = new FeatureLayer("//services.arcgis.com/V6ZHFr6zdgNZuVG0/ArcGIS/rest/services/NationalParkStats2013/FeatureServer/0");
+        
+        var symbol = new SimpleMarkerSymbol();
+        symbol.setColor(new Color("#cccccc"));
+        var renderer = new UniqueValueRenderer(symbol, "Type");
+        
+        var symbol1 = new SimpleMarkerSymbol();
+        symbol1.setColor(new Color("#ed5151"));
+        renderer.addValue("National Park", symbol1);
+        
+        var symbol2 = new SimpleMarkerSymbol();
+        symbol2.setColor(new Color("#149ece"));
+        renderer.addValue("National Monument", symbol2);
+
+        layer.setRenderer(renderer);
+        
+        map.addLayer(layer);
+      });
+    </script>
+  </head>
+  <body>
+    <div id="map"></div>
+  </body>
+</html>
