@@ -14,6 +14,12 @@ To explore these samples, you can:
 |:-:|:-:|:-:|
 |[Simple map](basic_simple_map)|[Add data](basic_add_data)|[Use renderer (simple)](basic_use_renderer)|
 
+### Show Unique Values
+
+|[![](unique_simple/thumbnail.png)](https://esri.github.io/visualization-js/unique_simple)|[![](unique_simple_with_legend/thumbnail.png)](https://esri.github.io/visualization-js/unique_simple_with_legend)|[![](unique_conversion/thumbnail.png)](https://esri.github.io/visualization-js/unique_conversion)|
+|:-:|:-:|:-:|
+|[Unique value renderer](unique_simple)|[With legend](unique_simple_with_legend)|[With function conversion](unique_conversion)|
+
 ## Resources
 
 * [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/)
