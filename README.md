@@ -2,11 +2,23 @@
 
 A collection of samples showing how to use the ArcGIS API for JavaScript to create various visualizations.
 
-## Basic
+To explore these samples, you can:
+* Click any thumbnail below to see a live sample
+* Click the title under a thumbnail to view code
 
-|[![](basic_simple_map/thumbnail.png)](https://esri.github.io/visualization-js/basic_simple_map)|![](basic_add_data/thumbnail.png)|![](basic_use_renderer/thumbnail.png)|
+## Samples
+
+### Basic
+
+|[![](basic_simple_map/thumbnail.png)](https://esri.github.io/visualization-js/basic_simple_map)|[![](basic_add_data/thumbnail.png)](https://esri.github.io/visualization-js/basic_add_data)|[![](basic_use_renderer/thumbnail.png)](https://esri.github.io/visualization-js/basic_use_renderer)|
 |:-:|:-:|:-:|
 |[Simple map](basic_simple_map)|[Add data](basic_add_data)|[Use renderer (simple)](basic_use_renderer)|
+
+### Show Unique Values
+
+|[![](unique_simple/thumbnail.png)](https://esri.github.io/visualization-js/unique_simple)|[![](unique_simple_with_legend/thumbnail.png)](https://esri.github.io/visualization-js/unique_simple_with_legend)|[![](unique_conversion/thumbnail.png)](https://esri.github.io/visualization-js/unique_conversion)|
+|:-:|:-:|:-:|
+|[Unique value renderer](unique_simple)|[With legend](unique_simple_with_legend)|[With function conversion](unique_conversion)|
 
 ## Resources
 
