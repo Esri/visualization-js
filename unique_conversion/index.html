@@ -36,28 +36,26 @@
         });
         
         var layer = new FeatureLayer("//services.arcgis.com/V6ZHFr6zdgNZuVG0/ArcGIS/rest/services/NationalParkStats2013/FeatureServer/0", {
-          outFields: ["Visitor"]
+          outFields: ["Address"]
         });
         
         var symbol = new SimpleMarkerSymbol();
-        symbol.setColor(new Color("#cccccc"));
+        symbol.setColor(new Color("#fffcd4"));
         var renderer = new UniqueValueRenderer(symbol, function(graphic){
-          if (graphic.attributes['Visitor'] > 1000000) {
-            return "Very Popular";
-          } else if (graphic.attributes['Visitor'] > 100000 && graphic.attributes['Visitor'] <= 1000000) {
-            return "Ordinary";
-          } else {
-            return "Popular";
+          if (graphic.attributes['Address'].indexOf("CA") !== -1 || graphic.attributes['Address'].indexOf("OR") !== -1 || graphic.attributes['Address'].indexOf("WA") !== -1) {
+            return "Pacific West";
+          }else {
+            return "Other Areas";
           };
         });
         
         var symbol1 = new SimpleMarkerSymbol();
-        symbol1.setColor(new Color("#ff0000"));
-        renderer.addValue("Very Popular", symbol1);
+        symbol1.setColor(new Color("#350242"));
+        renderer.addValue("Pacific West", symbol1);
         
         var symbol2 = new SimpleMarkerSymbol();
-        symbol2.setColor(new Color("#ff8888"));
-        renderer.addValue("Popular", symbol2);
+        symbol2.setColor(new Color("#e062c1"));
+        renderer.addValue("Other Areas", symbol2);
 
         layer.setRenderer(renderer);
         
