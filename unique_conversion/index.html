@@ -41,7 +41,7 @@
         
         var symbol = new SimpleMarkerSymbol();
         symbol.setColor(new Color("#fffcd4"));
-        var renderer = new UniqueValueRenderer(symbol, function(graphic){
+        var renderer = new UniqueValueRenderer(null, function(graphic){
           if (graphic.attributes['Address'].indexOf("CA") !== -1 || graphic.attributes['Address'].indexOf("OR") !== -1 || graphic.attributes['Address'].indexOf("WA") !== -1) {
             return "Pacific West";
           }else {
@@ -50,11 +50,11 @@
         });
         
         var symbol1 = new SimpleMarkerSymbol();
-        symbol1.setColor(new Color("#350242"));
+        symbol1.setColor(new Color("#7b3578"));
         renderer.addValue("Pacific West", symbol1);
         
         var symbol2 = new SimpleMarkerSymbol();
-        symbol2.setColor(new Color("#e062c1"));
+        symbol2.setColor(new Color("#cccccc"));
         renderer.addValue("Other Areas", symbol2);
 
         layer.setRenderer(renderer);
