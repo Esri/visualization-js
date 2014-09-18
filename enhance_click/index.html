@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no"/>
+    <title>Data Visualization - Enhancement: Click Graphic</title>
+    <link rel="stylesheet" href="//js.arcgis.com/3.10/js/esri/css/esri.css">
+    <style>
+      html, body, #map {
+        height: 100%;
+        margin: 0;
+      }
+      #info {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        padding: 10px;
+        background-color: #fff;
+        max-width: 200px;
+      }
+    </style>
+    <script src="//js.arcgis.com/3.10/"></script>
+    <script>
+      require([
+        "esri/map",
+        "esri/layers/FeatureLayer",
+        "esri/dijit/Legend",
+        "esri/renderers/UniqueValueRenderer",
+        "esri/symbols/SimpleMarkerSymbol",
+        "esri/Color",
+        "dojo/domReady!"
+      ], function(Map, FeatureLayer, Legend, UniqueValueRenderer, SimpleMarkerSymbol, Color) {
+        var map = new Map("map", {
+          basemap: "gray",
+          center: [-100, 40],
+          zoom: 5
+        });
+        
+        var layer = new FeatureLayer("//services.arcgis.com/V6ZHFr6zdgNZuVG0/ArcGIS/rest/services/NationalParkStats2013/FeatureServer/0", {
+          outFields: ["Name", "Visitor"]
+        });
+        
+        map.addLayer(layer);
+        
+        var legend = new Legend({
+          map: map,
+          layerInfos: [{
+            layer: layer,
+            title: "National Park Statistics 2013"
+          }]
+        }, "legend");
+        legend.startup();
+        
+        layer.on("click", function(evt){
+          legend.layerInfos[0].title = "National Park Statistics 2013 - Compared to "
+            + evt.graphic.attributes['Name'] + " (" + evt.graphic.attributes['Visitor'].toLocaleString()  + " visits)";
+          
+          var clickGraphicValue = evt.graphic.attributes['Visitor'];
+          var renderer = new UniqueValueRenderer(null, function(graphic){
+            var value = graphic.attributes['Visitor'];
+            if (value > clickGraphicValue) {
+              return "More";
+            } else if (value < clickGraphicValue) {
+              return "Less";
+            } else {
+              return "Same";
+            };
+          });
+          
+          var symbol1 = new SimpleMarkerSymbol();
+          symbol1.setColor(new Color("#ed5151"));
+          renderer.addValue("More", symbol1);
+          
+          var symbol2 = new SimpleMarkerSymbol();
+          symbol2.setColor(new Color("#cccccc"));
+          renderer.addValue("Same", symbol2);
+          
+          var symbol3 = new SimpleMarkerSymbol();
+          symbol3.setColor(new Color("#149ece"));
+          renderer.addValue("Less", symbol3);
+
+          layer.setRenderer(renderer);
+          layer.redraw();
+          legend.refresh();
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="map"></div>
+    <div id="info">
+      <div id="legend"></div>
+    </div>
+  </body>
+</html>
