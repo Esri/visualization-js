@@ -20,7 +20,7 @@ To explore these samples, you can:
 |:-:|:-:|:-:|
 |[Unique value renderer](unique_simple)|[With legend](unique_simple_with_legend)|[With function conversion](unique_conversion)|
 
-# Enhancement Options
+## Enhancement Options
 
 |[![](enhance_infotemplate/thumbnail.png)](https://esri.github.io/visualization-js/enhance_infotemplate)|[![](enhance_infotemplate_function/thumbnail.png)](https://esri.github.io/visualization-js/enhance_infotemplate_function)|[![](enhance_legend/thumbnail.png)](https://esri.github.io/visualization-js/enhance_legend)|
 |:-:|:-:|:-:|
