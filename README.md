@@ -26,7 +26,6 @@ To explore these samples, you can:
 |:-:|:-:|:-:|
 |[InfoTemplate (Pop-up)](enhance_infotemplate)|[InfoTemplate (Pop-up) with custom function](enhance_infotemplate_function)|[Legend](enhance_legend)|
 |[![](enhance_click/thumbnail.png)](https://esri.github.io/visualization-js/enhance_click)|||
-|:-:|:-:|:-:|
 |[Trigger actions on click](enhance_click)|||
 
 ## Resources
