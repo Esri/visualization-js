@@ -20,6 +20,15 @@ To explore these samples, you can:
 |:-:|:-:|:-:|
 |[Unique value renderer](unique_simple)|[With legend](unique_simple_with_legend)|[With function conversion](unique_conversion)|
 
+# Enhancement Options
+
+|[![](enhance_infotemplate/thumbnail.png)](https://esri.github.io/visualization-js/enhance_infotemplate)|[![](enhance_infotemplate_function/thumbnail.png)](https://esri.github.io/visualization-js/enhance_infotemplate_function)|[![](enhance_legend/thumbnail.png)](https://esri.github.io/visualization-js/enhance_legend)|
+|:-:|:-:|:-:|
+|[InfoTemplate (Pop-up)](enhance_infotemplate)|[InfoTemplate (Pop-up) with custom function](enhance_infotemplate_function)|[Legend](enhance_legend)|
+|[![](enhance_click/thumbnail.png)](https://esri.github.io/visualization-js/enhance_click)|||
+|:-:|:-:|:-:|
+|[Trigger actions on click](enhance_click)|||
+
 ## Resources
 
 * [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/)
