@@ -12,11 +12,12 @@
       }
       #info {
         position: absolute;
-        left: 0;
-        bottom: 0;
+        right: 0;
+        top: 0;
         padding: 10px;
         background-color: #fff;
         max-width: 200px;
+        font: 12px Segoe UI;
       }
     </style>
     <script src="//js.arcgis.com/3.10/"></script>
@@ -24,12 +25,11 @@
       require([
         "esri/map",
         "esri/layers/FeatureLayer",
-        "esri/dijit/Legend",
-        "esri/renderers/UniqueValueRenderer",
+        "esri/tasks/query",
         "esri/symbols/SimpleMarkerSymbol",
         "esri/Color",
         "dojo/domReady!"
-      ], function(Map, FeatureLayer, Legend, UniqueValueRenderer, SimpleMarkerSymbol, Color) {
+      ], function(Map, FeatureLayer, Query, SimpleMarkerSymbol, Color) {
         var map = new Map("map", {
           basemap: "gray",
           center: [-100, 40],
@@ -39,57 +39,49 @@
         var layer = new FeatureLayer("//services.arcgis.com/V6ZHFr6zdgNZuVG0/ArcGIS/rest/services/NationalParkStats2013/FeatureServer/0", {
           outFields: ["Name", "Visitor"]
         });
-        
         map.addLayer(layer);
         
-        var legend = new Legend({
-          map: map,
-          layerInfos: [{
-            layer: layer,
-            title: "National Park Statistics 2013"
-          }]
-        }, "legend");
-        legend.startup();
+        var selectedFeatures = [];
         
         layer.on("click", function(evt){
-          legend.layerInfos[0].title = "National Park Statistics 2013 - Compared to "
-            + evt.graphic.attributes['Name'] + " (" + evt.graphic.attributes['Visitor'].toLocaleString()  + " visits)";
+          //for features selected previously, set symbol to default
+          for (var i=0; i<selectedFeatures.length; i++) {
+            selectedFeatures[i].setSymbol(layer.renderer.symbol);
+          };
+          selectedFeatures = [];
+        
+          //query the layer with 100-mile buffer
+          var query = new Query();
+          query.geometry = evt.graphic.geometry;
+          query.distance = 200;
+          query.units = "miles";
           
-          var clickGraphicValue = evt.graphic.attributes['Visitor'];
-          var renderer = new UniqueValueRenderer(null, function(graphic){
-            var value = graphic.attributes['Visitor'];
-            if (value > clickGraphicValue) {
-              return "More";
-            } else if (value < clickGraphicValue) {
-              return "Less";
-            } else {
-              return "Same";
+          //start query
+          layer.queryFeatures(query).then(function(featureSet){
+            var graphics = featureSet.features;
+            var info = "NPS sites within 200 miles near <b>" + evt.graphic.attributes.Name + "</b>:<hr><ul>";
+            
+            for (var i=0; i<graphics.length; i++) {
+              graphics[i].setSymbol(new SimpleMarkerSymbol());
+              selectedFeatures.push(graphics[i]);
+              if (graphics[i].attributes.Name === evt.graphic.attributes.Name) {
+                graphics[i].symbol.setColor(new Color("#000"));
+              } else {
+                graphics[i].symbol.setColor(new Color("#f00"));
+                info += "<li>" + graphics[i].attributes.Name + "</li>";
+              };
             };
+            layer.redraw();
+            
+            info += "</ul>";
+            document.getElementById("info").innerHTML = info;
           });
-          
-          var symbol1 = new SimpleMarkerSymbol();
-          symbol1.setColor(new Color("#ed5151"));
-          renderer.addValue("More", symbol1);
-          
-          var symbol2 = new SimpleMarkerSymbol();
-          symbol2.setColor(new Color("#cccccc"));
-          renderer.addValue("Same", symbol2);
-          
-          var symbol3 = new SimpleMarkerSymbol();
-          symbol3.setColor(new Color("#149ece"));
-          renderer.addValue("Less", symbol3);
-
-          layer.setRenderer(renderer);
-          layer.redraw();
-          legend.refresh();
         });
       });
     </script>
   </head>
   <body>
     <div id="map"></div>
-    <div id="info">
-      <div id="legend"></div>
-    </div>
+    <div id="info">Click an NPS site on map to view nearby sites within 200 miles</div>
   </body>
 </html>
