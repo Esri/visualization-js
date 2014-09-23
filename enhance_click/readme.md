@@ -4,4 +4,4 @@
 
 Trigger event by clicking and update renderer.
 
-![](thumbnail.png)
+[![](thumbnail.png)](https://esri.github.io/visualization-js/enhance_click)
