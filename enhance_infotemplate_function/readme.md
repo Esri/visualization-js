@@ -4,4 +4,4 @@
 
 Use InfoTemplate to display pop-up with custom content.
 
-![](thumbnail.png)
+[![](thumbnail.png)](https://esri.github.io/visualization-js/enhance_infotemplate_function)
