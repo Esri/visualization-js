@@ -4,4 +4,4 @@
 
 Add legend to map and use custom layer title.
 
-![](thumbnail.png)
+[![](thumbnail.png)]((https://esri.github.io/visualization-js/enhance_click))
