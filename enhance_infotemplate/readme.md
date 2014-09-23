@@ -4,4 +4,4 @@
 
 Use InfoTemplate to display pop-up.
 
-![](thumbnail.png)
+[![](thumbnail.png)](https://esri.github.io/visualization-js/enhance_infotemplate)
