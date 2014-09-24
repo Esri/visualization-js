@@ -4,4 +4,4 @@
 
 Adding a feature layer to a map.
 
-![](thumbnail.png)
+[![](thumbnail.png)](https://esri.github.io/visualization-js/basic_add_data)

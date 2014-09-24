@@ -4,4 +4,4 @@
 
 Applying a simple renderer on a feature layer.
 
-![](thumbnail.png)
+[![](thumbnail.png)](https://esri.github.io/visualization-js/basic_use_renderer)

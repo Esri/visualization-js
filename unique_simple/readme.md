@@ -4,4 +4,4 @@
 
 Style data with unique value renderer.
 
-![](thumbnail.png)
+[![](thumbnail.png)](https://esri.github.io/visualization-js/unique_simple)
