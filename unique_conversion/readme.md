@@ -4,4 +4,4 @@
 
 Style data with unique value renderer and field function conversion.
 
-![](thumbnail.png)
+[![](thumbnail.png)](https://esri.github.io/visualization-js/unique_conversion)

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no"/>
+    <title>Data Visualization - Enhancement: Click Graphic</title>
+    <link rel="stylesheet" href="//js.arcgis.com/3.10/js/esri/css/esri.css">
+    <style>
+      html, body, #map {
+        height: 100%;
+        margin: 0;
+      }
+      #info {
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 10px;
+        background-color: #fff;
+        max-width: 200px;
+        font: 12px Segoe UI;
+      }
+    </style>
+    <script src="//js.arcgis.com/3.10/"></script>
+    <script>
+      require([
+        "esri/map",
+        "esri/layers/FeatureLayer",
+        "esri/tasks/query",
+        "esri/symbols/SimpleMarkerSymbol",
+        "esri/Color",
+        "dojo/domReady!"
+      ], function(Map, FeatureLayer, Query, SimpleMarkerSymbol, Color) {
+        var map = new Map("map", {
+          basemap: "gray",
+          center: [-100, 40],
+          zoom: 5
+        });
+        
+        var layer = new FeatureLayer("//services.arcgis.com/V6ZHFr6zdgNZuVG0/ArcGIS/rest/services/NationalParkStats2013/FeatureServer/0", {
+          outFields: ["Name", "Visitor"]
+        });
+        map.addLayer(layer);
+        
+        var selectedFeatures = [];
+        
+        layer.on("click", function(evt){
+          //for features selected previously, set symbol to default
+          for (var i=0; i<selectedFeatures.length; i++) {
+            selectedFeatures[i].setSymbol(layer.renderer.symbol);
+          };
+          selectedFeatures = [];
+        
+          //query the layer with 100-mile buffer
+          var query = new Query();
+          query.geometry = evt.graphic.geometry;
+          query.distance = 200;
+          query.units = "miles";
+          
+          //start query
+          layer.queryFeatures(query).then(function(featureSet){
+            var graphics = featureSet.features;
+            var info = "NPS sites within 200 miles near <b>" + evt.graphic.attributes.Name + "</b>:<hr><ul>";
+            
+            for (var i=0; i<graphics.length; i++) {
+              graphics[i].setSymbol(new SimpleMarkerSymbol());
+              selectedFeatures.push(graphics[i]);
+              if (graphics[i].attributes.Name === evt.graphic.attributes.Name) {
+                graphics[i].symbol.setColor(new Color("#000"));
+              } else {
+                graphics[i].symbol.setColor(new Color("#f00"));
+                info += "<li>" + graphics[i].attributes.Name + "</li>";
+              };
+            };
+            layer.redraw();
+            
+            info += "</ul>";
+            document.getElementById("info").innerHTML = info;
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="map"></div>
+    <div id="info">Click an NPS site on map to view nearby sites within 200 miles</div>
+  </body>
+</html>
