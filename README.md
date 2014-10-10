@@ -28,6 +28,14 @@ To explore these samples, you can:
 |[![](enhance_click/thumbnail.png)](https://esri.github.io/visualization-js/enhance_click)|||
 |[Trigger actions on click](enhance_click)|||
 
+### Show Data by Color
+
+|[![](color_simple/thumbnail.png)](https://esri.github.io/visualization-js/color_simple)|[![](color_focus/thumbnail.png)](https://esri.github.io/visualization-js/color_focus)|[![](color_stops/thumbnail.png)](https://esri.github.io/visualization-js/color_stops)|
+|:-:|:-:|:-:|
+|[Show data values by color](color_simple)|[Focus on a narrower range](color_focus)|[Use stops](color_stops)|
+|[![](color_classed/thumbnail.png)](https://esri.github.io/visualization-js/color_classed)|||
+|[Classify data](color_classed)|||
+
 ## Resources
 
 * [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/)

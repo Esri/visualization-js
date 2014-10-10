@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no"/>
+    <title>Color - Classed</title>
+    <link rel="stylesheet" href="//js.arcgis.com/3.11/esri/css/esri.css">
+    <style>
+      html, body, #map {
+        height: 100%;
+        margin: 0;
+      }
+      #info {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        padding: 10px;
+        background-color: #fff;
+        font-family: Segoe UI;
+      }
+    </style>
+    <script src="//js.arcgis.com/3.11/"></script>
+    <script>
+      require([
+        "esri/map",
+        "esri/layers/FeatureLayer",
+        "esri/symbols/SimpleFillSymbol",
+        "esri/symbols/SimpleLineSymbol",
+        "esri/renderers/SimpleRenderer",
+        "esri/renderers/ClassBreaksRenderer",
+        "esri/Color",
+        "esri/dijit/Legend",
+        "dojo/domReady!"
+      ], function(Map, FeatureLayer, SimpleFillSymbol, SimpleLineSymbol, SimpleRenderer, ClassBreaksRenderer, Color, Legend) {
+        var map = new Map("map", {
+          basemap: "topo",
+          center: [-100, 40],
+          zoom: 5
+        });
+        
+        var layer = new FeatureLayer("http://services.arcgis.com/V6ZHFr6zdgNZuVG0/arcgis/rest/services/CHSI2009USCounties/FeatureServer/0");
+        layer.setOpacity(0.8);
+        map.addLayer(layer);
+
+        var outline = new SimpleLineSymbol();
+        outline.setColor(new Color("#999999"));
+        outline.setWidth(0.5);
+
+        var renderer = new ClassBreaksRenderer(null, "Percent_Uninsured");
+        renderer.addBreak({
+          label: "< 2.5% below national average",
+          minValue: 6,
+          maxValue: 12.9,
+          symbol: new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, outline, new Color("#eecec9"))
+        });
+        renderer.addBreak({
+          label: "within 2.5% above/below national average",
+          minValue: 12.9,
+          maxValue: 17.9,
+          symbol: new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, outline, new Color("#d588b9"))
+        });
+        renderer.addBreak({
+          label: "> 2.5% above national average",
+          minValue: 17.9,
+          maxValue: 42,
+          symbol: new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, outline, new Color("#a14e96"))
+        });
+        layer.setRenderer(renderer);
+        
+        var legend = new Legend({
+          map: map,
+          layerInfos: [{
+            layer: layer
+          }]
+        }, "legend");
+        legend.startup();
+      });
+    </script>
+  </head>
+  <body>
+    <div id="map"></div>
+    <div id="info">
+      <div id="legend"></div>
+    </div>
+  </body>
+</html>

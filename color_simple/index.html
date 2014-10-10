@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no"/>
-    <title>Data Visualization - Enhancement: Legend</title>
+    <title>Color - Simple</title>
     <link rel="stylesheet" href="//js.arcgis.com/3.11/esri/css/esri.css">
     <style>
       html, body, #map {
@@ -16,6 +16,7 @@
         bottom: 0;
         padding: 10px;
         background-color: #fff;
+        font-family: Segoe UI;
       }
     </style>
     <script src="//js.arcgis.com/3.11/"></script>
@@ -23,39 +24,42 @@
       require([
         "esri/map",
         "esri/layers/FeatureLayer",
-        "esri/renderers/UniqueValueRenderer",
-        "esri/symbols/SimpleMarkerSymbol",
+        "esri/symbols/SimpleFillSymbol",
+        "esri/symbols/SimpleLineSymbol",
+        "esri/renderers/SimpleRenderer",
         "esri/Color",
         "esri/dijit/Legend",
         "dojo/domReady!"
-      ], function(Map, FeatureLayer, UniqueValueRenderer, SimpleMarkerSymbol, Color, Legend) {
+      ], function(Map, FeatureLayer, SimpleFillSymbol, SimpleLineSymbol, SimpleRenderer, Color, Legend) {
         var map = new Map("map", {
-          basemap: "gray",
+          basemap: "topo",
           center: [-100, 40],
           zoom: 5
         });
         
-        var layer = new FeatureLayer("//services.arcgis.com/V6ZHFr6zdgNZuVG0/ArcGIS/rest/services/NationalParkStats2013/FeatureServer/0");
-        
-        var renderer = new UniqueValueRenderer(null, "Type");
-        
-        var symbol1 = new SimpleMarkerSymbol();
-        symbol1.setColor(new Color("#ed5151"));
-        renderer.addValue("National Park", symbol1);
-        
-        var symbol2 = new SimpleMarkerSymbol();
-        symbol2.setColor(new Color("#149ece"));
-        renderer.addValue("National Monument", symbol2);
-
-        layer.setRenderer(renderer);
-        
+        var layer = new FeatureLayer("http://services.arcgis.com/V6ZHFr6zdgNZuVG0/arcgis/rest/services/CHSI2009USCounties/FeatureServer/0");
+        layer.setOpacity(0.8);
         map.addLayer(layer);
+        
+        var symbol = new SimpleFillSymbol();
+        var outline = new SimpleLineSymbol();
+        outline.setColor(new Color("#999999"));
+        outline.setWidth(0.5);
+        symbol.setOutline(outline);
+        
+        var renderer = new SimpleRenderer(symbol);
+        renderer.setColorInfo({
+          field: "Percent_Uninsured",
+          maxDataValue: 42,
+          minDataValue: 6,
+          colors: [new Color("#fffcd4"), new Color("#e0b2c1"), new Color("#c168ad"), new Color("#7b3578"), new Color("#350242")]
+        });
+        layer.setRenderer(renderer);
         
         var legend = new Legend({
           map: map,
           layerInfos: [{
-            layer: layer,
-            title: "National Park Statistics 2013"
+            layer: layer
           }]
         }, "legend");
         legend.startup();
