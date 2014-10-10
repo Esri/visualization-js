@@ -49,7 +49,7 @@
         var renderer = new ClassBreaksRenderer(null, "Percent_Uninsured");
         renderer.addBreak({
           label: "< 2.5% below national average",
-          minValue: 6.05,
+          minValue: 6,
           maxValue: 12.9,
           symbol: new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, outline, new Color("#eecec9"))
         });
@@ -62,7 +62,7 @@
         renderer.addBreak({
           label: "> 2.5% above national average",
           minValue: 17.9,
-          maxValue: 41.9,
+          maxValue: 42,
           symbol: new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, outline, new Color("#a14e96"))
         });
         layer.setRenderer(renderer);
