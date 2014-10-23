@@ -36,6 +36,14 @@ To explore these samples, you can:
 |[![](color_classed/thumbnail.png)](https://esri.github.io/visualization-js/color_classed)|||
 |[Classify data](color_classed)|||
 
+### Show Data by Size
+
+|[![](size_simple/thumbnail.png)](https://esri.github.io/visualization-js/size_simple)|[![](size_real/thumbnail.png)](https://developers.arcgis.com/javascript/samples/renderer_proportional_points/)|[![](size_line/thumbnail.png)](https://developers.arcgis.com/javascript/samples/renderer_proportional_lines/)|
+|:-:|:-:|:-:|
+|[Show data values by size](size_simple)|[Show data values in real-world unit](size_real)|[Show line data by size](size_line)|
+|[![](size_uniquevalue/thumbnail.png)](https://esri.github.io/visualization-js/size_uniquevalue)|||
+|[Show data values by size amd unique value](size_uniquevalue)|||
+
 ## Resources
 
 * [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/)
