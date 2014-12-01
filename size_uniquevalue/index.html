@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no"/>
+    <title>Data Visualization - Use Renderer</title>
+    <link rel="stylesheet" href="//js.arcgis.com/3.11/esri/css/esri.css">
+    <style>
+      html, body, #map {
+        height: 100%;
+        margin: 0;
+      }
+      #info {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        padding: 10px;
+        background-color: #fff;
+        font-family: Segoe UI;
+      }
+    </style>
+    <script src="//js.arcgis.com/3.11/"></script>
+    <script>
+      require([
+        "esri/map",
+        "esri/layers/FeatureLayer",
+        "esri/renderers/UniqueValueRenderer",
+        "esri/symbols/SimpleMarkerSymbol",
+        "esri/Color",
+        "esri/dijit/Legend",
+        "dojo/domReady!"
+      ], function(Map, FeatureLayer, UniqueValueRenderer, SimpleMarkerSymbol, Color, Legend) {
+        var map = new Map("map", {
+          basemap: "topo",
+          center: [-100, 40],
+          zoom: 5
+        });
+        
+        var layer = new FeatureLayer("//services.arcgis.com/V6ZHFr6zdgNZuVG0/ArcGIS/rest/services/NationalParkStats2013/FeatureServer/0");
+        map.addLayer(layer);
+        
+        var renderer = new UniqueValueRenderer(null, "Type");
+        
+        var symbol1 = new SimpleMarkerSymbol();
+        symbol1.setColor(new Color([253,127,111,0.8]));
+        symbol1.outline.setColor(new Color([255,255,255,1.0]));
+        renderer.addValue("National Park", symbol1);
+        
+        var symbol2 = new SimpleMarkerSymbol();
+        symbol2.setColor(new Color([255,181,90,0.8]));
+        symbol2.outline.setColor(new Color([255,255,255,1.0]));
+        renderer.addValue("National Monument", symbol2);
+        
+        renderer.setProportionalSymbolInfo({
+          field: "Visitor",
+          minDataValue: 100000,
+          maxDataValue: 10000000,
+          minSize: 10,
+          maxSize: 120,
+          valueUnit: "unknown",
+          legendOptions: {
+            customValues: [100000, 500000, 1000000, 10000000]
+          }
+        });
+        
+        layer.setRenderer(renderer);
+        
+        var legend = new Legend({
+          map: map,
+          layerInfos: [{
+            layer: layer,
+            title: "NPS site visitors in 2013"
+          }]
+        }, "legend");
+        legend.startup();
+      });
+    </script>
+  </head>
+  <body>
+    <div id="map"></div>
+    <div id="info">
+      <div id="legend"></div>
+    </div>
+  </body>
+</html>
